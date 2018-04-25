@@ -36,7 +36,7 @@ def lambda_handler(event, context):
   if currentTime > lastTime + 5 or currentTrigger == lastTrigger:
     print(os.environ['lastTime'])
     lambdaClient.update_function_configuration(
-          FunctionName='iotbutton_G030MD043261AFP0_iot-button-email-ses-python',
+          FunctionName='lambdaFunction',
           Environment={
               'Variables': {
                   'lastTrigger': currentTrigger,
@@ -57,7 +57,7 @@ def lambda_handler(event, context):
   print(os.environ['lastReqId'])
 
   SCOPES = ['https://www.googleapis.com/auth/calendar']
-  SERVICE_ACCOUNT_FILE = 'aws-iot-f3edea2d0394.json'
+  SERVICE_ACCOUNT_FILE = 'JWT.json'
 
   credentials = service_account.ServiceAccountCredentials.from_json_keyfile_name(
           SERVICE_ACCOUNT_FILE, scopes=SCOPES)
@@ -82,16 +82,11 @@ def lambda_handler(event, context):
   
   sentFlag = 1
   print('sending event')
-  hrui = service.events().insert(calendarId='jon.scott9013@gmail.com', body=event).execute()
-    
-  #if currentTrigger == 'apiCall' and os.environ['lastTrigger'] == 'buttonPush' :
-  #  sentFlag = 1
-  #  print('sending event')
-  #  hrui = service.events().insert(calendarId='jon.scott9013@gmail.com', body=event).execute()
+  hrui = service.events().insert(calendarId='email@gmail.com', body=event).execute()
     
   if sentFlag == 1 :
     lambdaClient.update_function_configuration(
-          FunctionName='iotbutton_G030MD043261AFP0_iot-button-email-ses-python',
+          FunctionName='lambdaFunction',
           Environment={
               'Variables': {
                   'lastTrigger': '0',
@@ -103,7 +98,7 @@ def lambda_handler(event, context):
     sentFlag = 0
   else :
     lambdaClient.update_function_configuration(
-            FunctionName='iotbutton_G030MD043261AFP0_iot-button-email-ses-python',
+            FunctionName='lambdaFunction',
             Environment={
                 'Variables': {
                     'lastTrigger': currentTrigger,
