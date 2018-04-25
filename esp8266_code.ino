@@ -1,18 +1,17 @@
 #include <ESP8266WiFi.h>
 #include <WiFiClientSecure.h>
 
-const char* host = "ancgrlkv10.execute-api.us-west-2.amazonaws.com";
+const char* host = "awsEndpoint.aws.com"; //AWS endpoint
 const int httpsPort = 443;
 
 // Use web browser to view and copy
 // SHA1 fingerprint of the certificate
-const char* fingerprint = "CF 05 98 89 CA FF 8E D8 5E 5C E0 C2 E4 F7 E6 C3 C7 50 DD 5C";
+const char* fingerprint = "CF 05 98 89 CA FF 8E D8 5E 5C E0 C2 E4 F7 E6 C3 C7 50 DD 5C"; //meaningless fingerprint
 
 #define MESSAGE_SIZE 4
 #define LED_BUILTIN 2
-const char* ssid = "WINMAIN";
-const char* password = "winlab89";
-//IPAddress server(192, 168, 207, 201);
+const char* ssid = "wifi";
+const char* password = "wifipassword";
 WiFiClient client;
 //uint16_t port = 8888;
 String serial_data;
@@ -33,7 +32,7 @@ void sendRequest() {
     Serial.println("certificate doesn't match");
   }
 
-  String url = "/test/iotbutton_G030MD043261AFP0_iot-button-email-ses-python";
+  String url = "/<stage>/lambdaFunctionName";
   String transmit = String("GET ") + url + " HTTP/1.1\r\n" +
                "Host: " + host + "\r\n" +
                "Connection: close\r\n\r\n";
