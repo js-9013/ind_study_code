@@ -1,0 +1,451 @@
+******************************************************************************
+                  TI ARM Linker PC v16.9.6                     
+******************************************************************************
+>> Linked Tue Apr 24 17:16:23 2018
+
+OUTPUT FILE NAME:   <touch_controller.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 00000d51
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  MAIN                  00000000   00040000  000015a2  0003ea5e  R  X
+  INFO                  00200000   00004000  00000000  00004000  R  X
+  SRAM_CODE             01000000   00010000  00000000  00010000  RW X
+  SRAM_DATA             20000000   00010000  000013f0  0000ec10  RW  
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    000015a8   000015a8    r-x
+  00000000    00000000    00000144   00000144    r-- .intvecs
+  00000144    00000144    00001326   00001326    r-x .text
+  0000146c    0000146c    000000c0   000000c0    r-- .const
+  00001530    00001530    00000078   00000078    r-- .cinit
+20000000    20000000    000011f0   00000000    rw-
+  20000000    20000000    00001180   00000000    rw- .bss
+  20001180    20001180    00000070   00000000    rw- .data
+2000fe00    2000fe00    00000200   00000000    rw-
+  2000fe00    2000fe00    00000200   00000000    rw- .stack
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    00000144     
+                  00000000    00000144     msp432_startup_ccs.obj (.intvecs)
+
+.text      0    00000144    00001326     
+                  00000144    00000280     main.obj (.text:main)
+                  000003c4    00000154     adc14.obj (.text:_getIndexForMemRegister)
+                  00000518    00000136     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_div_t2.obj (.text)
+                  0000064e    00000002     msp432_startup_ccs.obj (.text:defaultISR)
+                  00000650    000000e0     cs.obj (.text:CS_initClockSignal)
+                  00000730    000000b2     timer_a.obj (.text:privateTimer_AProcessClockSourceDivider)
+                  000007e2    00000002     msp432_startup_ccs.obj (.text:faultISR)
+                  000007e4    000000a4     cs.obj (.text:CS_startHFXTWithTimeout)
+                  00000888    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.obj (.text)
+                  00000924    00000094     spi.obj (.text:SPI_initMaster)
+                  000009b8    00000094     uart.obj (.text:UART_initModule)
+                  00000a4c    0000007c     dma.obj (.text:DMA_setChannelTransfer)
+                  00000ac8    0000007a     rtsv7M4_T_le_v4SPD16_eabi.lib : memset_t2.obj (.text)
+                  00000b42    00000002     msp432_startup_ccs.obj (.text:nmiISR)
+                  00000b44    00000070     adc14.obj (.text:ADC14_configureConversionMemory)
+                  00000bb4    00000070     rtsv7M4_T_le_v4SPD16_eabi.lib : autoinit.obj (.text)
+                  00000c24    00000068                                   : copy_decompress_lzss.obj (.text:decompress:lzss)
+                  00000c8c    00000064     main.obj (.text:DMA_INT1_IRQHandler)
+                  00000cf0    00000060     cs.obj (.text:_CSGetHFXTFrequency)
+                  00000d50    00000054     rtsv7M4_T_le_v4SPD16_eabi.lib : boot.obj (.text)
+                  00000da4    00000054                                   : exit.obj (.text)
+                  00000df8    00000050     gpio.obj (.text:GPIO_setAsPeripheralModuleFunctionInputPin)
+                  00000e48    0000004c     rtsv7M4_T_le_v4SPD16_eabi.lib : cpy_tbl.obj (.text)
+                  00000e94    00000048     adc14.obj (.text:ADC14_configureSingleSampleMode)
+                  00000edc    00000046     timer_a.obj (.text:Timer_A_generatePWM)
+                  00000f22    00000002     rtsv7M4_T_le_v4SPD16_eabi.lib : mpu_init.obj (.text)
+                  00000f24    00000044     dma.obj (.text:DMA_disableChannelAttribute)
+                  00000f68    00000044     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_tou_t2.obj (.text)
+                  00000fac    00000040     adc14.obj (.text:ADC14_initModule)
+                  00000fec    00000040     adc14.obj (.text:ADC14_setSampleHoldTrigger)
+                  0000102c    00000040     dma.obj (.text:DMA_getChannelAttribute)
+                  0000106c    0000003c     minigen_controller.obj (.text:SpiWrite)
+                  000010a8    0000003a     minigen.obj (.text:minigen_adjustFreq)
+                  000010e2    00000002     rtsv7M4_T_le_v4SPD16_eabi.lib : startup.obj (.text)
+                  000010e4    00000038     minigen_controller.obj (.text:configSpi)
+                  0000111c    00000038     minigen.obj (.text:minigen_reset)
+                  00001154    00000038     rtsv7M4_T_le_v4SPD16_eabi.lib : fs_tod_t2.obj (.text)
+                  0000118c    00000030     spi.obj (.text:is_A_Module)
+                  000011bc    00000030     minigen.obj (.text:minigen_setMode)
+                  000011ec    00000030     minigen_controller.obj (.text:setup_local_oscillator)
+                  0000121c    00000024     gpio.obj (.text:GPIO_setAsOutputPin)
+                  00001240    00000024     minigen.obj (.text:minigen_setFreqAdjustMode)
+                  00001264    00000020     dma.obj (.text:DMA_setChannelControl)
+                  00001284    00000020     spi.obj (.text:SPI_transmitData)
+                  000012a4    00000020     minigen.obj (.text:minigen_freqCalc)
+                  000012c4    0000001c     decoder.obj (.text:generate_code_sent)
+                  000012e0    0000001c     minigen.obj (.text:minigen_selectFreqReg)
+                  000012fc    0000001a     spi.obj (.text:SPI_enableModule)
+                  00001316    00000002     --HOLE-- [fill = 0]
+                  00001318    00000018     gpio.obj (.text:GPIO_setOutputLowOnPin)
+                  00001330    00000018     rtsv7M4_T_le_v4SPD16_eabi.lib : args_main.obj (.text)
+                  00001348    00000014     adc14.obj (.text:ADCIsConversionRunning)
+                  0000135c    00000014     cs.obj (.text:CS_setExternalClockSourceFrequency)
+                  00001370    00000014     gpio.obj (.text:GPIO_setOutputHighOnPin)
+                  00001384    00000014     gpio.obj (.text:GPIO_toggleOutputOnPin)
+                  00001398    00000014     msp432_startup_ccs.obj (.text:resetISR)
+                  000013ac    00000014     rtsv7M4_T_le_v4SPD16_eabi.lib : _lock.obj (.text)
+                  000013c0    00000010     adc14.obj (.text:ADC14_enableModule)
+                  000013d0    00000010     dma.obj (.text:DMA_enableModule)
+                  000013e0    00000010     sysctl.obj (.text:SysCtl_disableNMISource)
+                  000013f0    00000010     sysctl.obj (.text:SysCtl_enableNMISource)
+                  00001400    0000000e     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_none.obj (.text:decompress:none)
+                  0000140e    00000002     --HOLE-- [fill = 0]
+                  00001410    0000000c     dma.obj (.text:DMA_setControlBase)
+                  0000141c    0000000c     spi.obj (.text:EUSCI_A_SPI_enable)
+                  00001428    0000000c     spi.obj (.text:EUSCI_B_SPI_enable)
+                  00001434    0000000c     sysctl.obj (.text:SysCtl_getNMISourceStatus)
+                  00001440    0000000c     uart.obj (.text:UART_enableModule)
+                  0000144c    0000000c     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_zero_init.obj (.text:decompress:ZI)
+                  00001458    00000006     cs.obj (.text:CS_startHFXT)
+                  0000145e    00000004     spi.obj (.text:EUSCI_A_SPI_transmitData)
+                  00001462    00000004     spi.obj (.text:EUSCI_B_SPI_transmitData)
+                  00001466    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.obj (.text)
+
+.const     0    0000146c    000000c0     
+                  0000146c    00000080     adc14.obj (.const:_ctlRegs)
+                  000014ec    00000024     main.obj (.const:uartConfig)
+                  00001510    0000001c     minigen_controller.obj (.const:spiMasterConfig)
+
+.cinit     0    00001530    00000078     
+                  00001530    00000054     (.cinit..data.load) [load image, compression = lzss]
+                  00001584    0000000c     (__TI_handler_table)
+                  00001590    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00001598    00000010     (__TI_cinit_table)
+
+.bss       0    20000000    00001180     UNINITIALIZED
+                  20000000    000007d0     (.common:data_array1)
+                  200007d0    000007d0     (.common:data_array2)
+                  20000fa0    00000008     cs.obj (.bss)
+                  20000fa8    00000002     (.common:configReg)
+                  20000faa    00000056     --HOLE--
+                  20001000    00000100     (.common:controlTable)
+                  20001100    00000080     (.common:code_sent)
+
+.data      0    20001180    00000070     UNINITIALIZED
+                  20001180    00000030     gpio.obj (.data:GPIO_PORT_TO_BASE)
+                  200011b0    00000018     main.obj (.data:pwmConfig)
+                  200011c8    00000010     main.obj (.data)
+                  200011d8    0000000c     rtsv7M4_T_le_v4SPD16_eabi.lib : exit.obj (.data:$O1$$)
+                  200011e4    00000008                                   : _lock.obj (.data:$O1$$)
+                  200011ec    00000004                                   : stkdepth_vars.obj (.data)
+
+.stack     0    2000fe00    00000200     UNINITIALIZED
+                  2000fe00    00000200     --HOLE--
+
+MODULE SUMMARY
+
+       Module                     code   ro data   rw data
+       ------                     ----   -------   -------
+    .\
+       main.obj                   740    36        4296   
+       msp432_startup_ccs.obj     26     324       0      
+       minigen.obj                258    0         2      
+       minigen_controller.obj     164    28        0      
+       decoder.obj                28     0         128    
+    +--+--------------------------+------+---------+---------+
+       Total:                     1216   388       4426   
+                                                          
+    .\driverlib\MSP432P4xx\
+       adc14.obj                  688    128       0      
+       cs.obj                     510    0         8      
+       dma.obj                    316    0         0      
+       spi.obj                    286    0         0      
+       timer_a.obj                248    0         0      
+       gpio.obj                   180    0         48     
+       uart.obj                   160    0         0      
+       sysctl.obj                 44     0         0      
+    +--+--------------------------+------+---------+---------+
+       Total:                     2432   128       56     
+                                                          
+    C:\ti\ccsv7\tools\compiler\ti-cgt-arm_16.9.6.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
+       fd_div_t2.obj              310    0         0      
+       memcpy_t2.obj              156    0         0      
+       memset_t2.obj              122    0         0      
+       autoinit.obj               112    0         0      
+       copy_decompress_lzss.obj   104    0         0      
+       exit.obj                   84     0         12     
+       boot.obj                   84     0         0      
+       cpy_tbl.obj                76     0         0      
+       fd_tou_t2.obj              68     0         0      
+       fs_tod_t2.obj              56     0         0      
+       _lock.obj                  20     0         8      
+       args_main.obj              24     0         0      
+       copy_decompress_none.obj   14     0         0      
+       copy_zero_init.obj         12     0         0      
+       pre_init.obj               4      0         0      
+       stkdepth_vars.obj          0      0         4      
+       mpu_init.obj               2      0         0      
+       startup.obj                2      0         0      
+    +--+--------------------------+------+---------+---------+
+       Total:                     1250   0         24     
+                                                          
+       Stack:                     0      0         512    
+       Linker Generated:          0      120       0      
+    +--+--------------------------+------+---------+---------+
+       Grand Total:               4898   636       5018   
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00001598 records: 2, size/record: 8, table size: 16
+	.data: load addr=00001530, load size=00000054 bytes, run addr=20001180, run size=00000070 bytes, compression=lzss
+	.bss: load addr=00001590, load size=00000008 bytes, run addr=20000000, run size=00001180 bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 00001584 records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_lzss
+	index: 1, handler: __TI_decompress_none
+	index: 2, handler: __TI_zero_init
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                                      
+-------   ----                                      
+00000b45  ADC14_configureConversionMemory           
+00000e95  ADC14_configureSingleSampleMode           
+000013c1  ADC14_enableModule                        
+00000fad  ADC14_initModule                          
+00000fed  ADC14_setSampleHoldTrigger                
+00000da5  C$$EXIT                                   
+00000651  CS_initClockSignal                        
+0000135d  CS_setExternalClockSourceFrequency        
+00001459  CS_startHFXT                              
+000007e5  CS_startHFXTWithTimeout                   
+00000c8d  DMA_INT1_IRQHandler                       
+00000f25  DMA_disableChannelAttribute               
+000013d1  DMA_enableModule                          
+0000102d  DMA_getChannelAttribute                   
+00001265  DMA_setChannelControl                     
+00000a4d  DMA_setChannelTransfer                    
+00001411  DMA_setControlBase                        
+0000141d  EUSCI_A_SPI_enable                        
+0000145f  EUSCI_A_SPI_transmitData                  
+00001429  EUSCI_B_SPI_enable                        
+00001463  EUSCI_B_SPI_transmitData                  
+0000121d  GPIO_setAsOutputPin                       
+00000df9  GPIO_setAsPeripheralModuleFunctionInputPin
+00001371  GPIO_setOutputHighOnPin                   
+00001319  GPIO_setOutputLowOnPin                    
+00001385  GPIO_toggleOutputOnPin                    
+UNDEFED   SHT$$INIT_ARRAY$$Base                     
+UNDEFED   SHT$$INIT_ARRAY$$Limit                    
+000012fd  SPI_enableModule                          
+00000925  SPI_initMaster                            
+00001285  SPI_transmitData                          
+0000106d  SpiWrite                                  
+000013e1  SysCtl_disableNMISource                   
+000013f1  SysCtl_enableNMISource                    
+00001435  SysCtl_getNMISourceStatus                 
+00000edd  Timer_A_generatePWM                       
+00001441  UART_enableModule                         
+000009b9  UART_initModule                           
+4000480c  WDTCTL_SYM                                
+20010000  __STACK_END                               
+00000200  __STACK_SIZE                              
+00001598  __TI_CINIT_Base                           
+000015a8  __TI_CINIT_Limit                          
+00001584  __TI_Handler_Table_Base                   
+00001590  __TI_Handler_Table_Limit                  
+00000bb5  __TI_auto_init                            
+200011d8  __TI_cleanup_ptr                          
+00000c25  __TI_decompress_lzss                      
+00001401  __TI_decompress_none                      
+200011dc  __TI_dtors_ptr                            
+200011e0  __TI_enable_exit_profile_output           
+ffffffff  __TI_pprof_out_hndl                       
+ffffffff  __TI_prof_data_size                       
+ffffffff  __TI_prof_data_start                      
+00000000  __TI_static_base__                        
+0000144d  __TI_zero_init                            
+00000f69  __aeabi_d2uiz                             
+00000519  __aeabi_ddiv                              
+00001155  __aeabi_f2d                               
+00000ac9  __aeabi_memclr                            
+00000ac9  __aeabi_memclr4                           
+00000ac9  __aeabi_memclr8                           
+00000889  __aeabi_memcpy                            
+00000889  __aeabi_memcpy4                           
+00000889  __aeabi_memcpy8                           
+00000acb  __aeabi_memset                            
+00000acb  __aeabi_memset4                           
+00000acb  __aeabi_memset8                           
+ffffffff  __binit__                                 
+ffffffff  __c_args__                                
+00000f23  __mpu_init                                
+2000fe00  __stack                                   
+00001331  _args_main                                
+00000d51  _c_int00                                  
+200011e4  _lock                                     
+000013bb  _nop                                      
+000013b3  _register_lock                            
+000013ad  _register_unlock                          
+000010e3  _system_post_cinit                        
+00001467  _system_pre_init                          
+200011e8  _unlock                                   
+00000da9  abort                                     
+ffffffff  binit                                     
+200011d0  code_found                                
+20001100  code_sent                                 
+20000fa8  configReg                                 
+000010e5  configSpi                                 
+20001000  controlTable                              
+00000e49  copy_in                                   
+20000000  data_array1                               
+200007d0  data_array2                               
+200011c8  doBitReverse                              
+00000db1  exit                                      
+000012c5  generate_code_sent                        
+00000000  interruptVectors                          
+00000145  main                                      
+200011ec  main_func_sp                              
+00000889  memcpy                                    
+00000ad1  memset                                    
+000010a9  minigen_adjustFreq                        
+000012a5  minigen_freqCalc                          
+0000111d  minigen_reset                             
+000012e1  minigen_selectFreqReg                     
+00001241  minigen_setFreqAdjustMode                 
+000011bd  minigen_setMode                           
+200011b0  pwmConfig                                 
+000011ed  setup_local_oscillator                    
+00001510  spiMasterConfig                           
+200011cc  switch_data                               
+200011d4  timerCount                                
+000014ec  uartConfig                                
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                                      
+-------   ----                                      
+00000000  __TI_static_base__                        
+00000000  interruptVectors                          
+00000145  main                                      
+00000200  __STACK_SIZE                              
+00000519  __aeabi_ddiv                              
+00000651  CS_initClockSignal                        
+000007e5  CS_startHFXTWithTimeout                   
+00000889  __aeabi_memcpy                            
+00000889  __aeabi_memcpy4                           
+00000889  __aeabi_memcpy8                           
+00000889  memcpy                                    
+00000925  SPI_initMaster                            
+000009b9  UART_initModule                           
+00000a4d  DMA_setChannelTransfer                    
+00000ac9  __aeabi_memclr                            
+00000ac9  __aeabi_memclr4                           
+00000ac9  __aeabi_memclr8                           
+00000acb  __aeabi_memset                            
+00000acb  __aeabi_memset4                           
+00000acb  __aeabi_memset8                           
+00000ad1  memset                                    
+00000b45  ADC14_configureConversionMemory           
+00000bb5  __TI_auto_init                            
+00000c25  __TI_decompress_lzss                      
+00000c8d  DMA_INT1_IRQHandler                       
+00000d51  _c_int00                                  
+00000da5  C$$EXIT                                   
+00000da9  abort                                     
+00000db1  exit                                      
+00000df9  GPIO_setAsPeripheralModuleFunctionInputPin
+00000e49  copy_in                                   
+00000e95  ADC14_configureSingleSampleMode           
+00000edd  Timer_A_generatePWM                       
+00000f23  __mpu_init                                
+00000f25  DMA_disableChannelAttribute               
+00000f69  __aeabi_d2uiz                             
+00000fad  ADC14_initModule                          
+00000fed  ADC14_setSampleHoldTrigger                
+0000102d  DMA_getChannelAttribute                   
+0000106d  SpiWrite                                  
+000010a9  minigen_adjustFreq                        
+000010e3  _system_post_cinit                        
+000010e5  configSpi                                 
+0000111d  minigen_reset                             
+00001155  __aeabi_f2d                               
+000011bd  minigen_setMode                           
+000011ed  setup_local_oscillator                    
+0000121d  GPIO_setAsOutputPin                       
+00001241  minigen_setFreqAdjustMode                 
+00001265  DMA_setChannelControl                     
+00001285  SPI_transmitData                          
+000012a5  minigen_freqCalc                          
+000012c5  generate_code_sent                        
+000012e1  minigen_selectFreqReg                     
+000012fd  SPI_enableModule                          
+00001319  GPIO_setOutputLowOnPin                    
+00001331  _args_main                                
+0000135d  CS_setExternalClockSourceFrequency        
+00001371  GPIO_setOutputHighOnPin                   
+00001385  GPIO_toggleOutputOnPin                    
+000013ad  _register_unlock                          
+000013b3  _register_lock                            
+000013bb  _nop                                      
+000013c1  ADC14_enableModule                        
+000013d1  DMA_enableModule                          
+000013e1  SysCtl_disableNMISource                   
+000013f1  SysCtl_enableNMISource                    
+00001401  __TI_decompress_none                      
+00001411  DMA_setControlBase                        
+0000141d  EUSCI_A_SPI_enable                        
+00001429  EUSCI_B_SPI_enable                        
+00001435  SysCtl_getNMISourceStatus                 
+00001441  UART_enableModule                         
+0000144d  __TI_zero_init                            
+00001459  CS_startHFXT                              
+0000145f  EUSCI_A_SPI_transmitData                  
+00001463  EUSCI_B_SPI_transmitData                  
+00001467  _system_pre_init                          
+000014ec  uartConfig                                
+00001510  spiMasterConfig                           
+00001584  __TI_Handler_Table_Base                   
+00001590  __TI_Handler_Table_Limit                  
+00001598  __TI_CINIT_Base                           
+000015a8  __TI_CINIT_Limit                          
+20000000  data_array1                               
+200007d0  data_array2                               
+20000fa8  configReg                                 
+20001000  controlTable                              
+20001100  code_sent                                 
+200011b0  pwmConfig                                 
+200011c8  doBitReverse                              
+200011cc  switch_data                               
+200011d0  code_found                                
+200011d4  timerCount                                
+200011d8  __TI_cleanup_ptr                          
+200011dc  __TI_dtors_ptr                            
+200011e0  __TI_enable_exit_profile_output           
+200011e4  _lock                                     
+200011e8  _unlock                                   
+200011ec  main_func_sp                              
+2000fe00  __stack                                   
+20010000  __STACK_END                               
+4000480c  WDTCTL_SYM                                
+ffffffff  __TI_pprof_out_hndl                       
+ffffffff  __TI_prof_data_size                       
+ffffffff  __TI_prof_data_start                      
+ffffffff  __binit__                                 
+ffffffff  __c_args__                                
+ffffffff  binit                                     
+UNDEFED   SHT$$INIT_ARRAY$$Base                     
+UNDEFED   SHT$$INIT_ARRAY$$Limit                    
+
+[111 symbols]
